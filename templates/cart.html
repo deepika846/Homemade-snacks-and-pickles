@@ -1,3 +1,4 @@
+<!-- templates/cart.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +23,6 @@
   </script>
 </head>
 <body class="bg-bgLight text-gray-800 font-sans">
-
-  <!-- Navbar -->
   <nav class="bg-primary text-white px-6 py-4 flex justify-between items-center shadow-md">
     <div class="text-xl font-bold">🛒 Your Cart</div>
     <ul class="flex gap-6">
@@ -34,31 +33,25 @@
     </ul>
   </nav>
 
-  <!-- Cart Content -->
   <div class="max-w-3xl mx-auto p-6">
     <h2 class="text-2xl font-bold mb-4 text-center">Cart Items</h2>
     <div id="cart-container" class="space-y-4"></div>
-
-    <!-- Total Price -->
     <div id="total-price" class="text-xl font-semibold text-right mt-6"></div>
 
-    <!-- Cart Buttons -->
     <div class="flex justify-between mt-6">
       <button onclick="clearCart()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">
         Clear Cart
       </button>
       <button onclick="placeOrder()" class="bg-primary text-white px-4 py-2 rounded hover:bg-orange-600">
-        Place Order
+        Proceed to Checkout
       </button>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="text-center py-4 bg-gray-100 mt-10 text-sm">
     © 2025 Homemade Pickles & Snacks. All rights reserved.
   </footer>
 
-  <!-- JavaScript -->
   <script>
     const cartContainer = document.getElementById("cart-container");
     const totalPriceEl = document.getElementById("total-price");
@@ -112,28 +105,11 @@
         alert("Cart is empty!");
         return;
       }
-
-      // Example POST request (if using Flask or backend)
-      fetch("http://localhost:5000/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ items: cart })
-      })
-      .then(res => res.json())
-      .then(data => {
-        alert("Order placed successfully!");
-        clearCart();
-      })
-      .catch(err => {
-        console.error(err);
-        alert("Failed to place order.");
-      });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.href = "/checkout.html";
     }
 
     renderCart();
   </script>
-
 </body>
 </html>

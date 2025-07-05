@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmed - Homemade Pickles</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f5e9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    .checkmark {
+      font-size: 100px;
+      color: #4caf50;
+    }
+
+    h2 {
+      color: #2e7d32;
+      margin-top: 20px;
+      font-size: 26px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    a:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="checkmark">✔</div>
+  <h2>Your order has been placed successfully!</h2>
+  <a href="{{ url_for('home') }}">← Back to Home</a>
+
+</body>
+</html>
